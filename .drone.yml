@@ -5,18 +5,22 @@ workspace:
   base: /workdir
   path: code
 pipeline:
-  build:
+  test:
     image: gcr.io/time-coin/builder-java-sbt:0.1
     commands:
-      - export SBTCMD='sbt -Dsbt.global.base=/var/lib/sbt-cache/ -Dsbt.ivy.home=/var/lib/ivy-cache/ -Divy.home=/var/lib/ivy-cache/'
-      - cd /workdir/code && $SBTCMD publishLocal
-  test:
-    image: gcr.io/time-coin/sbt:latest
-    commands:
-      - ls /var/lib/sbt-cache/
-      - ls /var/lib/sbt-cache/1.1.5/
-      - ls /var/lib/ivy-cache/
-      - ls /var/lib/ivy-cache/cache
+      - ls /var/lib/
+#  build:
+#    image: gcr.io/time-coin/builder-java-sbt:0.1
+#    commands:
+#      - export SBTCMD='sbt -Dsbt.global.base=/var/lib/sbt-cache/ -Dsbt.ivy.home=/var/lib/ivy-cache/ -Divy.home=/var/lib/ivy-cache/'
+#      - cd /workdir/code && $SBTCMD publishLocal
+#  test:
+#    image: gcr.io/time-coin/sbt:latest
+#    commands:
+#      - ls /var/lib/sbt-cache/
+#      - ls /var/lib/sbt-cache/1.1.5/
+#      - ls /var/lib/ivy-cache/
+#      - ls /var/lib/ivy-cache/cache
 #  github_release:
 #    image: plugins/github-release
 #    files: /workdir/code/*.tgz
