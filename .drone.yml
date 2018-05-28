@@ -8,13 +8,15 @@ pipeline:
   build:
     image: gcr.io/time-coin/builder-java-sbt:0.1
     commands:
-      - cd /workdir/code && sbt -Dsbt.global.base=/workdir/sbt/ -Dsbt.ivy.home=/workdir/ivy2/ -Divy.home=/workdir/ivy2/ publishLocal
+      - export SBTCMD=sbt -Dsbt.global.base=/var/lib/sbt-cache/ -Dsbt.ivy.home=/var/lib/ivy-cache/ -Divy.home=/var/lib/ivy-cache/
+      - cd /workdir/code && $SBTCMD publishLocal
   test:
     image: gcr.io/time-coin/sbt:latest
     commands:
-      - ls /workdir/sbt/
-      - ls /workdir/ivy2/
-      - ls /workdir/ivy2/cache
+      - ls /var/lib/sbt/
+      - ls /var/lib/sbt/1.1.5/
+      - ls /var/lib/ivy2/
+      - ls /var/lib/ivy2/cache
 #  github_release:
 #    image: plugins/github-release
 #    files: /workdir/code/*.tgz
