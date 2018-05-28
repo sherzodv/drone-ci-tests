@@ -20,7 +20,6 @@ pipeline:
       - /var/lib/ivy-cache:/workdir/ivy
     commands:
       - ls /workdir/sbt/
-      - ls /workdir/sbt/1.1.5/
       - ls /workdir/ivy/
       - ls /workdir/ivy/cache
   github_release:
