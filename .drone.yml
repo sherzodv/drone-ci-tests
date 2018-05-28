@@ -14,6 +14,7 @@ pipeline:
     commands:
       - ls /workdir/sbt/
       - ls /workdir/ivy2/
+      - ls /workdir/ivy2/cache
 #  github_release:
 #    image: plugins/github-release
 #    files: /workdir/code/*.tgz
