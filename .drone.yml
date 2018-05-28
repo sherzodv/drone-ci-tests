@@ -8,7 +8,7 @@ pipeline:
   build:
     image: gcr.io/time-coin/builder-java-sbt:0.1
     commands:
-      - export SBTCMD=sbt -Dsbt.global.base=/var/lib/sbt-cache/ -Dsbt.ivy.home=/var/lib/ivy-cache/ -Divy.home=/var/lib/ivy-cache/
+      - export SBTCMD='sbt -Dsbt.global.base=/var/lib/sbt-cache/ -Dsbt.ivy.home=/var/lib/ivy-cache/ -Divy.home=/var/lib/ivy-cache/'
       - cd /workdir/code && $SBTCMD publishLocal
   test:
     image: gcr.io/time-coin/sbt:latest
