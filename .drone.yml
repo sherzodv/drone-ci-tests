@@ -19,10 +19,10 @@ pipeline:
       - /var/lib/sbt-cache:/workdir/sbt
       - /var/lib/ivy-cache:/workdir/ivy
     commands:
-      - ls /workspace/ivy/
-      - ls /workspace/ivy/1.1.5/
-      - ls /workspace/ivy/
-      - ls /workspace/ivy/cache
+      - ls /workdir/sbt/
+      - ls /workdir/sbt/1.1.5/
+      - ls /workdir/ivy/
+      - ls /workdir/ivy/cache
   github_release:
     image: plugins/github-release
     volumes:
