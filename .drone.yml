@@ -7,13 +7,17 @@ workspace:
 pipeline:
   build:
     image: gcr.io/time-coin/builder-java-sbt:0.1
-    volumes: [ /var/lib/sbt-cache:/workdir/sbt, /var/lib/ivy-cache:/workdir/ivy ]
+    volumes:
+      - /var/lib/sbt-cache:/workdir/sbt
+      - /var/lib/ivy-cache:/workdir/ivy
     commands:
       - export SBTCMD='sbt -Dsbt.global.base=/workdir/sbt/ -Dsbt.ivy.home=/workdir/ivy/ -Divy.home=/workdir/ivy/'
       - cd /workdir/code && $SBTCMD publishLocal
   test:
     image: gcr.io/time-coin/sbt:latest
-    volumes: [ /var/lib/sbt-cache:/workdir/sbt, /var/lib/ivy-cache:/workdir/ivy ]
+    volumes:
+      - /var/lib/sbt-cache:/workdir/sbt
+      - /var/lib/ivy-cache:/workdir/ivy
     commands:
       - ls /workspace/ivy/
       - ls /workspace/ivy/1.1.5/
@@ -21,7 +25,9 @@ pipeline:
       - ls /workspace/ivy/cache
   github_release:
     image: plugins/github-release
-    volumes: [ /var/lib/sbt-cache:/workdir/sbt, /var/lib/ivy-cache:/workdir/ivy ]
+    volumes:
+      - /var/lib/sbt-cache:/workdir/sbt
+      - /var/lib/ivy-cache:/workdir/ivy
     files: /workdir/code/*.tgz
     files: /workdir/code/*.zip
     secrets: [ GITHUB_RELEASE_API_KEY ]
