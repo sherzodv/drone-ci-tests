@@ -6,15 +6,14 @@ workspace:
   path: code
 pipeline:
   build:
-    image: gcr.io/time-coin/sbt:latest
+    image: gcr.io/time-coin/builder-java-sbt:0.1
     commands:
-      - echo boo > /workdir/code/dist.tgz
-      - echo boo > /workdir/code/dist.zip
+      - cd /workdir/code && sbt -Dsbt.global.base=/workdir/sbt/ -Dsbt.ivy.home=/workdir/ivy2/ -Divy.home=/workdir/ivy2/ publishLocal
   test:
     image: gcr.io/time-coin/sbt:latest
     commands:
-      - cat /workdir/code/dist.tgz
-      - cat /workdir/code/dist.zip
+      - ls /workdir/sbt/
+      - ls /workdir/ivy2/
 #  github_release:
 #    image: plugins/github-release
 #    files: /workdir/code/*.tgz
