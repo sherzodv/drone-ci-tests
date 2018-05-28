@@ -13,10 +13,10 @@ pipeline:
   test:
     image: gcr.io/time-coin/sbt:latest
     commands:
-      - ls /var/lib/sbt/
-      - ls /var/lib/sbt/1.1.5/
-      - ls /var/lib/ivy2/
-      - ls /var/lib/ivy2/cache
+      - ls /var/lib/sbt-cache/
+      - ls /var/lib/sbt-cache/1.1.5/
+      - ls /var/lib/ivy-cache/
+      - ls /var/lib/ivy-cache/cache
 #  github_release:
 #    image: plugins/github-release
 #    files: /workdir/code/*.tgz
