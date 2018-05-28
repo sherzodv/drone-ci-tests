@@ -5,26 +5,25 @@ workspace:
   base: /workdir
   path: code
 pipeline:
-  test:
+  build:
     image: gcr.io/time-coin/builder-java-sbt:0.1
+    volumes: [ /var/lib/sbt-cache:/workdir/sbt, /var/lib/ivy-cache:/workdir/ivy ]
     commands:
-      - ls /var/lib/
-#  build:
-#    image: gcr.io/time-coin/builder-java-sbt:0.1
-#    commands:
-#      - export SBTCMD='sbt -Dsbt.global.base=/var/lib/sbt-cache/ -Dsbt.ivy.home=/var/lib/ivy-cache/ -Divy.home=/var/lib/ivy-cache/'
-#      - cd /workdir/code && $SBTCMD publishLocal
-#  test:
-#    image: gcr.io/time-coin/sbt:latest
-#    commands:
-#      - ls /var/lib/sbt-cache/
-#      - ls /var/lib/sbt-cache/1.1.5/
-#      - ls /var/lib/ivy-cache/
-#      - ls /var/lib/ivy-cache/cache
-#  github_release:
-#    image: plugins/github-release
-#    files: /workdir/code/*.tgz
-#    files: /workdir/code/*.zip
-#    secrets: [ GITHUB_RELEASE_API_KEY ]
-#    when:
-#      event: tag
+      - export SBTCMD='sbt -Dsbt.global.base=/workdir/sbt/ -Dsbt.ivy.home=/workdir/ivy/ -Divy.home=/workdir/ivy/'
+      - cd /workdir/code && $SBTCMD publishLocal
+  test:
+    image: gcr.io/time-coin/sbt:latest
+    volumes: [ /var/lib/sbt-cache:/workdir/sbt, /var/lib/ivy-cache:/workdir/ivy ]
+    commands:
+      - ls /workspace/ivy/
+      - ls /workspace/ivy/1.1.5/
+      - ls /workspace/ivy/
+      - ls /workspace/ivy/cache
+  github_release:
+    image: plugins/github-release
+    volumes: [ /var/lib/sbt-cache:/workdir/sbt, /var/lib/ivy-cache:/workdir/ivy ]
+    files: /workdir/code/*.tgz
+    files: /workdir/code/*.zip
+    secrets: [ GITHUB_RELEASE_API_KEY ]
+    when:
+      event: tag
