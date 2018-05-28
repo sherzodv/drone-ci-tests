@@ -1,0 +1,24 @@
+clone:
+  clone-nothing:
+    image: plugins/git
+workspace:
+  base: /workdir
+  path: code
+pipeline:
+  build:
+    image: gcr.io/time-coin/sbt:latest
+    commands:
+      - echo boo > /workdir/code/dist.tgz
+      - echo boo > /workdir/code/dist.zip
+  test:
+    image: gcr.io/time-coin/sbt:latest
+    commands:
+      - cat /workdir/code/dist.tgz
+      - cat /workdir/code/dist.zip
+#  github_release:
+#    image: plugins/github-release
+#    files: /workdir/code/*.tgz
+#    files: /workdir/code/*.zip
+#    secrets: [ GITHUB_RELEASE_API_KEY ]
+#    when:
+#      event: tag
