@@ -12,17 +12,17 @@ pipeline:
       - /var/lib/ivy-cache:/workdir/ivy
     commands:
       - export SBTCMD='sbt -Dsbt.global.base=/workdir/sbt/ -Dsbt.ivy.home=/workdir/ivy/ -Divy.home=/workdir/ivy/'
-      - cd /workdir/code && $SBTCMD stage
+      - cd /workdir/code && $SBTCMD stage universal:packageBin
   build-installer:
-    image: gcr.io/time-coin/wix-builder:0.1
+    image: gcr.io/time-coin/wix-builder:0.2
     commands:
-      - cp -rf /workdir/code/win-installer /home/wix/
-      - cp -rf /workdir/code/target/universal/stage /home/wix/win-installer/
-      - cd /home/wix/win-installer && bash build.sh
+      - cp -rf /workdir/code/target/universal/stage /workdir/code/win-installer/
+      - cd /workdir/code/win-installer && bash build.sh
   github_release:
     image: plugins/github-release
     files:
-      - /home/wix/win-installer/*.msi
+      - /workdir/code/win-installer/*.msi
+      - /workdir/code/target/universal/*.zip
     secrets: [ GITHUB_RELEASE_API_KEY ]
     when:
       event: tag

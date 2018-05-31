@@ -19,7 +19,7 @@
 		<Media Id="1" Cabinet="product.cab" EmbedCab="yes"/>
 
 		<Directory Id="TARGETDIR" Name="SourceDir">
-			<Directory Id="ProgramFilesFolder">
+			<Directory Id="ProgramFiles64Folder">
 				<Directory Id="INSTALLDIR" Name="mytc">
 					<Directory Id="PravdaCLI" Name="pravda">
 					</Directory>
