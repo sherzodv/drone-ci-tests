@@ -6,29 +6,22 @@ workspace:
   path: code
 pipeline:
   build:
-    image: gcr.io/time-coin/builder-java-sbt:0.1
-    volumes:
-      - /var/lib/sbt-cache:/workdir/sbt
-      - /var/lib/ivy-cache:/workdir/ivy
-    commands:
-      - export SBTCMD='sbt -Dsbt.global.base=/workdir/sbt/ -Dsbt.ivy.home=/workdir/ivy/ -Divy.home=/workdir/ivy/'
-      - cd /workdir/code && $SBTCMD publishLocal
-  test:
     image: gcr.io/time-coin/sbt:latest
     volumes:
       - /var/lib/sbt-cache:/workdir/sbt
       - /var/lib/ivy-cache:/workdir/ivy
     commands:
-      - ls /workdir/sbt/
-      - ls /workdir/ivy/
-      - ls /workdir/ivy/cache
+      - export SBTCMD='sbt -Dsbt.global.base=/workdir/sbt/ -Dsbt.ivy.home=/workdir/ivy/ -Divy.home=/workdir/ivy/'
+      - cd /workdir/code && $SBTCMD stage
+  build-installer:
+    image: gcr.io/time-coin/wix-builder:0.1
+    commands:
+      - cp -rf /workdir/code/target/universal/stage /workdir/code/win-installer
+      - cd /workdir/code/win-installer && bash build.sh
   github_release:
     image: plugins/github-release
-    volumes:
-      - /var/lib/sbt-cache:/workdir/sbt
-      - /var/lib/ivy-cache:/workdir/ivy
-    files: /workdir/code/*.tgz
-    files: /workdir/code/*.zip
+    files:
+      - /workdir/code/win-installer/*.msi
     secrets: [ GITHUB_RELEASE_API_KEY ]
     when:
       event: tag
