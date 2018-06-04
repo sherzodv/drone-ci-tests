@@ -27,8 +27,20 @@
 			</Directory>
 		</Directory>
 
+		<DirectoryRef Id="INSTALLDIR">
+			<Component Id="EnvVarsUsr" Guid="a6712585-43df-433c-a1b1-f8cb7612c7df">
+				<Environment
+					Id="idEnvPathUsr"
+					Name="PATH" Action="set" Part="last" System="no"
+					Value="[INSTALLDIR]pravda\bin"
+					Permanent="no"
+				/>
+			</Component>
+		</DirectoryRef>
+
 		<Feature Id="PravdaCommandLineInterface" Level="1">
 			<ComponentGroupRef Id="PravdaCLIComponent"/>
+			<ComponentRef Id="EnvVarsUsr" />
 		</Feature>
 
 	</Product>

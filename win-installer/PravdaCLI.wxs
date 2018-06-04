@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="PravdaCLI">
+            <Directory Id="dirCD0028CEC7C36B941778CCAB7DAE757D" Name="bin">
+                <Component Id="cmp7A5B5E5991EC0419905F35154659A8B8" Guid="{CFE7D641-F0C2-4FFB-A679-5C64BE0F5B37}" Win64="yes">
+                    <File Id="filB3F234B0C3DDFEFFABC3E5DF84DC5631" KeyPath="yes" Source="SourceDir\bin\drone-ci-test" />
+                </Component>
+                <Component Id="cmpEE68949CB7DF9E94ADEC5CB7E82891C1" Guid="{B08F0C68-5BC7-4B6E-ADA5-32412D5AD925}" Win64="yes">
+                    <File Id="fil5ADB34BA3779B0BB389E968EB20C47D3" KeyPath="yes" Source="SourceDir\bin\drone-ci-test.bat" />
+                </Component>
+            </Directory>
+            <Directory Id="dirFF2C42C86021F9812F52232062264C8F" Name="lib">
+                <Component Id="cmpE93B0BB40A0E032096A2EC4BC549407D" Guid="{239175D1-CC65-496B-AC03-F00BD8DBCB74}" Win64="yes">
+                    <File Id="fil112DDB0826C55B9AD7B1A72CEC13C142" KeyPath="yes" Source="SourceDir\lib\com.test.drone-ci-test-1.0.jar" />
+                </Component>
+                <Component Id="cmpAEFF7593C68B76D9E302D68ECD2B1A45" Guid="{2355F189-A24A-4A9D-A318-44990BC0B7FA}" Win64="yes">
+                    <File Id="fil00243D496094ECCAE8BBFB9436279C94" KeyPath="yes" Source="SourceDir\lib\io.monix.monix-eval_2.12-3.0.0-RC1.jar" />
+                </Component>
+                <Component Id="cmpE4DB9ECB48B13E3FA05FCFE599E5038E" Guid="{CFACF9FB-F3C6-4980-849C-877CCFF5D10E}" Win64="yes">
+                    <File Id="fil87BFB1D562C4A7A22665FEBA484FFECB" KeyPath="yes" Source="SourceDir\lib\io.monix.monix-execution_2.12-3.0.0-RC1.jar" />
+                </Component>
+                <Component Id="cmp3777B9B907D6AC11DD86184D6760CDF5" Guid="{A989826D-C575-47C8-B083-14EE676560E7}" Win64="yes">
+                    <File Id="fil410EDDA879D479AF44B611D6DF05D875" KeyPath="yes" Source="SourceDir\lib\io.monix.monix-java_2.12-3.0.0-RC1.jar" />
+                </Component>
+                <Component Id="cmp9D6A6C229F37020EB4C4837A474BE1C8" Guid="{D7414ABC-F912-4D6C-B2ED-675CF7820EDE}" Win64="yes">
+                    <File Id="fil0DF0224E7680349D6EE6E7102A5E18B6" KeyPath="yes" Source="SourceDir\lib\io.monix.monix-reactive_2.12-3.0.0-RC1.jar" />
+                </Component>
+                <Component Id="cmp3890082EBFEA1AA1538D7C9FECF5DDDB" Guid="{36B47417-BC52-48D3-A47D-0D303AA07EB7}" Win64="yes">
+                    <File Id="fil847EBBD44AEA9EA09058CD494FAC67FD" KeyPath="yes" Source="SourceDir\lib\io.monix.monix-tail_2.12-3.0.0-RC1.jar" />
+                </Component>
+                <Component Id="cmpB9DD193C89A8A5E70CD676355628D070" Guid="{12E34B35-89EA-4614-8DBE-192C1B82AD56}" Win64="yes">
+                    <File Id="fil1614A30F658156AD4ADADDFBE96E139D" KeyPath="yes" Source="SourceDir\lib\io.monix.monix_2.12-3.0.0-RC1.jar" />
+                </Component>
+                <Component Id="cmp40E7B234915E7E45132A40C211B7AACF" Guid="{F3A62096-FE46-480A-A836-A6C632E69C5D}" Win64="yes">
+                    <File Id="fil80625D1AFB3A1028A45B4FB5021E2EA2" KeyPath="yes" Source="SourceDir\lib\org.jctools.jctools-core-2.1.1.jar" />
+                </Component>
+                <Component Id="cmp040051A1EB43E0FAE31AF9B6199098F3" Guid="{41D15419-7235-4D3C-8A2D-6E649E75B5D9}" Win64="yes">
+                    <File Id="fil28F1DA939A5A525EECBE06B41848EEC2" KeyPath="yes" Source="SourceDir\lib\org.reactivestreams.reactive-streams-1.0.2.jar" />
+                </Component>
+                <Component Id="cmp0A4D50A10ADA5CD9FDBE5AA9BE8AEE88" Guid="{2042FDFF-1EEE-4DA3-8740-2EC29F4F85D5}" Win64="yes">
+                    <File Id="fil5F7DA324BD09489EE0ACABA212A68B20" KeyPath="yes" Source="SourceDir\lib\org.scala-lang.scala-library-2.12.5.jar" />
+                </Component>
+                <Component Id="cmp669F48C97F4E63288BC332D027209AF6" Guid="{91DF93CA-1BEF-4858-B702-F937149A7799}" Win64="yes">
+                    <File Id="filDB320F13B8238178FD74B2E06E8671A7" KeyPath="yes" Source="SourceDir\lib\org.scala-lang.scala-reflect-2.12.5.jar" />
+                </Component>
+                <Component Id="cmpF869364C15F4D783A590F0896B05C5C9" Guid="{9679EC93-5A67-4714-A1A2-08E4D93565F0}" Win64="yes">
+                    <File Id="filE32291C5B3D5305CF7EFBFDC514AA70E" KeyPath="yes" Source="SourceDir\lib\org.typelevel.cats-core_2.12-1.1.0.jar" />
+                </Component>
+                <Component Id="cmp4C9D238A35A7BD2B085AA131CEFE35CA" Guid="{7AE02A97-C23F-48E5-99B4-ADB1806FAEAD}" Win64="yes">
+                    <File Id="fil5CC67A538F1ABC309DA07FB927CF6BC3" KeyPath="yes" Source="SourceDir\lib\org.typelevel.cats-effect_2.12-0.10.jar" />
+                </Component>
+                <Component Id="cmp28CDD8348DE449D52B008D48BFF96336" Guid="{09DB7023-7945-4921-8888-C3440E342F42}" Win64="yes">
+                    <File Id="fil6604B2528D7147BE3F94A99F725E941B" KeyPath="yes" Source="SourceDir\lib\org.typelevel.cats-kernel_2.12-1.1.0.jar" />
+                </Component>
+                <Component Id="cmpE8A2BB00DFBF72AA2286E48AA3BD48D2" Guid="{792DDA21-550C-4882-B16D-A438A34D29F0}" Win64="yes">
+                    <File Id="filB2633F61BF0081007B2CD032215FBD64" KeyPath="yes" Source="SourceDir\lib\org.typelevel.cats-macros_2.12-1.1.0.jar" />
+                </Component>
+                <Component Id="cmp67C3426A98DC40C9C5C8C64802E6F9C3" Guid="{28F49F0E-444A-4DED-B67F-D6C2462D5C16}" Win64="yes">
+                    <File Id="fil7413AE0421CA5C6F5D4F66FF29171427" KeyPath="yes" Source="SourceDir\lib\org.typelevel.machinist_2.12-0.6.2.jar" />
+                </Component>
+            </Directory>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="PravdaCLIComponent">
+            <ComponentRef Id="cmp7A5B5E5991EC0419905F35154659A8B8" />
+            <ComponentRef Id="cmpEE68949CB7DF9E94ADEC5CB7E82891C1" />
+            <ComponentRef Id="cmpE93B0BB40A0E032096A2EC4BC549407D" />
+            <ComponentRef Id="cmpAEFF7593C68B76D9E302D68ECD2B1A45" />
+            <ComponentRef Id="cmpE4DB9ECB48B13E3FA05FCFE599E5038E" />
+            <ComponentRef Id="cmp3777B9B907D6AC11DD86184D6760CDF5" />
+            <ComponentRef Id="cmp9D6A6C229F37020EB4C4837A474BE1C8" />
+            <ComponentRef Id="cmp3890082EBFEA1AA1538D7C9FECF5DDDB" />
+            <ComponentRef Id="cmpB9DD193C89A8A5E70CD676355628D070" />
+            <ComponentRef Id="cmp40E7B234915E7E45132A40C211B7AACF" />
+            <ComponentRef Id="cmp040051A1EB43E0FAE31AF9B6199098F3" />
+            <ComponentRef Id="cmp0A4D50A10ADA5CD9FDBE5AA9BE8AEE88" />
+            <ComponentRef Id="cmp669F48C97F4E63288BC332D027209AF6" />
+            <ComponentRef Id="cmpF869364C15F4D783A590F0896B05C5C9" />
+            <ComponentRef Id="cmp4C9D238A35A7BD2B085AA131CEFE35CA" />
+            <ComponentRef Id="cmp28CDD8348DE449D52B008D48BFF96336" />
+            <ComponentRef Id="cmpE8A2BB00DFBF72AA2286E48AA3BD48D2" />
+            <ComponentRef Id="cmp67C3426A98DC40C9C5C8C64802E6F9C3" />
+        </ComponentGroup>
+    </Fragment>
+</Wix>
