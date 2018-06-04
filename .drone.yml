@@ -5,24 +5,11 @@ workspace:
   base: /workdir
   path: code
 pipeline:
-  build:
+  test:
     image: gcr.io/time-coin/sbt:latest
-    volumes:
-      - /var/lib/sbt-cache:/workdir/sbt
-      - /var/lib/ivy-cache:/workdir/ivy
+    environment:
+      - BO_RELEASE=${DRONE_TAG##v}
     commands:
-      - export SBTCMD='sbt -Dsbt.global.base=/workdir/sbt/ -Dsbt.ivy.home=/workdir/ivy/ -Divy.home=/workdir/ivy/'
-      - cd /workdir/code && $SBTCMD stage universal:packageBin
-  build-installer:
-    image: gcr.io/time-coin/wix-builder:0.2
-    commands:
-      - cp -rf /workdir/code/target/universal/stage /workdir/code/win-installer/
-      - cd /workdir/code/win-installer && bash build.sh
-  github_release:
-    image: plugins/github-release
-    files:
-      - /workdir/code/win-installer/*.msi
-      - /workdir/code/target/universal/*.zip
-    secrets: [ GITHUB_RELEASE_API_KEY ]
+      - echo $$BO_RELEASE
     when:
       event: tag
