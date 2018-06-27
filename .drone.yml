@@ -7,10 +7,5 @@ workspace:
 pipeline:
   test:
     image: gcr.io/time-coin/sbt:latest
-    environment:
-      - BO_RELEASE=${DRONE_TAG##v}
     commands:
       - echo yay
-      - echo $$BO_RELEASE
-    when:
-      event: tag
